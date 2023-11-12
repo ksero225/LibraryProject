@@ -69,7 +69,7 @@ CREATE TABLE `user_books` (
 
 LOCK TABLES `user_books` WRITE;
 /*!40000 ALTER TABLE `user_books` DISABLE KEYS */;
-INSERT INTO `user_books` VALUES (1,1,4,'2023-10-28'),(2,3,2,'2023-10-28'),(3,1,4,'2023-10-28'),(4,1,4,'2023-10-28'),(5,1,2,'2023-10-28'),(6,7,4,'2023-10-29');
+INSERT INTO `user_books` VALUES (1,1,4,'2023-10-28'),(2,3,2,'2023-10-28'),(3,1,4,'2023-10-28'),(4,1,4,'2023-10-28'),(5,1,2,'2023-10-28');
 /*!40000 ALTER TABLE `user_books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,10 +86,10 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `userFirstName` varchar(255) DEFAULT NULL,
   `userLastName` varchar(255) DEFAULT NULL,
-  `phoneNumber` varchar(20) DEFAULT NULL,
+  `phoneNumber` int DEFAULT NULL,
   `registrationDate` date DEFAULT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin','admin','123123123','2023-10-27'),(2,'Kamilek','zaq1@WX','Kamil','Nowak','123123123','2023-10-27'),(3,'Maciek','zaq1@WSX','Maciek','Nowak','123123123','2023-10-27'),(4,'Karolitka','zaq1@WSX','Karol','Nowak','123123123','2023-10-27'),(5,'Babielato','cde3$RFV','Urszula','Kowalczyk','513731236','2023-10-27'),(6,'Woda','bgt5^YHN','Pawel','Micha','192837465','2023-10-27'),(7,'m','mmmmmmmm!1','Mati','Mati','Mati','2023-10-29');
+INSERT INTO `users` VALUES (1,'admin','admin','admin','admin',123123123,'2023-10-27'),(2,'Kamilek','zaq1@WX','Kamil','Nowak',123123123,'2023-10-27'),(3,'Maciek','zaq1@WSX','Maciek','Nowak',123123123,'2023-10-27'),(4,'Karolitka','zaq1@WSX','Karol','Nowak',123123123,'2023-10-27'),(5,'Babielato','cde3$RFV','Urszula','Kowalczyk',513731236,'2023-10-27'),(6,'Woda','bgt5^YHN','Pawel','Micha',192837465,'2023-10-27'),(8,'kakao','zaq1@WSX','pawel','micha',312582312,'2023-11-12');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -111,4 +111,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-09  7:26:07
+-- Dump completed on 2023-11-12 18:04:11
