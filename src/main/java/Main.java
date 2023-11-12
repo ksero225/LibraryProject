@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -27,34 +28,40 @@ public class Main {
                 userManager.login(login, password);
                 break;
             case 2:
-                // Prompt for registration information
-                System.out.print("Login: ");
-                login = scan.nextLine();
-                // Check if the login is already in use
-                if (UserManager.isUserAlreadyUsed(login)) {
-                    System.out.println("Login is already used!");
-                    break;
-                }
-                System.out.print("Password: ");
-                password = scan.nextLine();
-                // Check password strength
-                if (UserManager.checkUserPassword(password)) {
-                    System.out.println("Password is too weak!");
-                    break;
-                }
-                System.out.print("Your first name: ");
-                String userFirstName = scan.nextLine();
-                System.out.print("Your last name: ");
-                String userLastName = scan.nextLine();
-                System.out.print("Your phone number: ");
-                String phoneNumber = scan.nextLine();
+                try {
 
-                // Register the user
-                if (userFirstName != null || userLastName != null || phoneNumber != null) {
-                    User user = new User(login, password, userFirstName, userLastName, phoneNumber);
-                    userManager.register(user);
-                } else {
-                    System.out.println("Invalid information");
+
+                    // Prompt for registration information
+                    System.out.print("Login: ");
+                    login = scan.nextLine();
+                    // Check if the login is already in use
+                    if (UserManager.isUserAlreadyUsed(login)) {
+                        System.out.println("Login is already used!");
+                        break;
+                    }
+                    System.out.print("Password: ");
+                    password = scan.nextLine();
+                    // Check password strength
+                    if (UserManager.checkUserPassword(password)) {
+                        System.out.println("Password is too weak!");
+                        break;
+                    }
+                    System.out.print("Your first name: ");
+                    String userFirstName = scan.nextLine();
+                    System.out.print("Your last name: ");
+                    String userLastName = scan.nextLine();
+                    System.out.print("Your phone number: ");
+                    int phoneNumber = scan.nextInt();
+
+                    // Register the user
+                    if (userFirstName != null || userLastName != null) {
+                        User user = new User(login, password, userFirstName, userLastName, phoneNumber);
+                        userManager.register(user);
+                    } else {
+                        System.out.println("Invalid information");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: " + e);
                 }
                 break;
             case 3:
@@ -82,10 +89,18 @@ public class Main {
             System.out.println("3. Borrow a book");
             System.out.println("4. Log out");
 
-            System.out.print("Option: ");
-            final int option = scan.nextInt();
-            scan.nextLine();
-
+            Integer option = null;
+            try {
+                System.out.print("Option: ");
+                option = scan.nextInt();
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Error: " + e);
+            }
+            if(option == null ){
+                System.out.println("Error, option is null");
+                return;
+            }
             UserManager userManager = new UserManager();
             switch (option) {
                 case 1:
@@ -110,6 +125,9 @@ public class Main {
                     // Call the logout function
                     userManager.logout();
                     break;
+                default:
+                    System.out.println("Wrong choice");
+
             }
         }
     }

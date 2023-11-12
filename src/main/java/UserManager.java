@@ -161,7 +161,7 @@ public class UserManager implements UserInterface {
             statement.setString(2, user.password());
             statement.setString(3, user.userFirstName());
             statement.setString(4, user.userLastName());
-            statement.setString(5, user.phoneNumber());
+            statement.setInt(5, user.phoneNumber());
             statement.setDate(6, sqlDate);
 
             statement.executeUpdate();
